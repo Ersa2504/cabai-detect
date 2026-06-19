@@ -511,7 +511,15 @@ div[data-testid="stButton"].btn-analisis > button {
 # ══════════════════════════════════════════════════════════════
 #  FUNGSI BACKEND
 # ══════════════════════════════════════════════════════════════
+import gdown
+import os
+
 MODEL_PATH = "efficientnet_cabai_final.keras"
+
+if not os.path.exists(MODEL_PATH):
+    FILE_ID = "1VPjmD3MWSfsSTDMgdG4uWCIWYm4gS-Mo"
+    url = f"https://drive.google.com/uc?id={FILE_ID}"
+    gdown.download(url, MODEL_PATH, quiet=False)
 
 @st.cache_resource(show_spinner=False)
 def load_model(path: str):
